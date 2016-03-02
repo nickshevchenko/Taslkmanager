@@ -4,29 +4,40 @@
 		<title></title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <title>Todolist</title>
-  <script>
-  $.ajax({
-    // http may be used instead of https if required
-    url: "https://sheetsu.com/apis/6b1effc8",
-    crossDomain : true,
-  })
-  .done(function(data) {
-    if (data.length == 0) {
-      console.log("No results found");
-      return;
-    }
-    $.each(data, function(key, value) {
-       console.log(value);
-       console.log(key);
-    });
-  })
-  .fail(function() {
-    console.log("Failed");
-  });
-  </script>
+			  <script>
+			  $.ajax({
+				// http may be used instead of https if required
+				url: "https://sheetsu.com/apis/6b1effc8",
+				crossDomain : true,
+			  })
+			  .done(function(data) {
+				if (data.length == 0) {
+				  console.log("No results found");
+				  return;
+				}
+				$.each(data, function(key, value) {
+				   console.log(value);
+				   if (typeof(value) == "object")
+				   {
+				  
+				   $.each(value, function(l,a)
+				   {
+					
+					$("body").append("<p>"+a.task+"</p>")
+				   }
+				   )
+				   //$("body").append("<p>"+value[1].task+"</p>")
+				   }
+				   console.log(key);
+				});
+			  })
+			  .fail(function() {
+				console.log("Failed");
+			  });
+			  </script>
 	</head>
 	<body>
-		<p>#1</p>
-		<p>#2</p>
+		<p>First Task</p>
+		<p>First Task</p>
 	</body>
 </html>
