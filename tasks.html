@@ -20,7 +20,7 @@
 	//console.log(status);
 	//});
 
-	$.get("https://sheetsu.com/apis/8ca755ad", function(data, status)
+	$.get("https://sheetsu.com/apis/e4597234", function(data, status)
 	{
 	  for(var i = 0; i < data.result.length; i++){
  		  var prevContent = $('#projects-holder').html();
@@ -28,7 +28,7 @@
  		  var newContent = prevContent + '<div id="project-' + data.result[i].id + '">' + projectElement +'<\/div>'
 		  $('#projects-holder').html(newContent)
 		}
-	$.get("https://sheetsu.com/apis/e4597234", function(data, status){
+	$.get("https://sheetsu.com/apis/8ca755ad", function(data, status){
 	  for(var i = 0; i < data.result.length; i++){
           var taskElement = '<div>' + data.result[i].description + ' - ' + data.result[i].status + '<\/div>'
 	      $('#project-' + data.result[i].project_id).append(taskElement)
