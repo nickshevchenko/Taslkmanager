@@ -4,24 +4,42 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <title>Tasks and projects</title>
   <script>
+
+	//$.get("https://sheetsu.com/apis/8ca755ad", function(data, status)
+	//{
+	//console.log("Data: ");
+	//console.log(data);
+	//console.log("\nStatus: ");
+	//console.log(status);
+	//});
+	//$.get("https://sheetsu.com/apis/e4597234", function(data, status)
+	//{
+	//console.log("Data: ");
+	//console.log(data);
+	//console.log("\nStatus: ");
+	//console.log(status);
+	//});
+
 	$.get("https://sheetsu.com/apis/8ca755ad", function(data, status)
 	{
-	console.log("Data: ");
-	console.log(data);
-	console.log("\nStatus: ");
-	console.log(status);
-	});
-	$.get("https://sheetsu.com/apis/e4597234", function(data, status)
-	{
-	console.log("Data: ");
-	console.log(data);
-	console.log("\nStatus: ");
-	console.log(status);
-	});
+	  for(var i = 0; i < data.result.length; i++){
+ 		  var prevContent = $('#projects-holder').html();
+ 		  var projectElement = '<h3>' + data.result[i].name + '<\/h3>'
+ 		  var newContent = prevContent + '<div id="project-' + data.result[i].id + '">' + projectElement +'<\/div>'
+		  $('#projects-holder').html(newContent)
+		}
+	$.get("https://sheetsu.com/apis/e4597234", function(data, status){
+	  for(var i = 0; i < data.result.length; i++){
+          var taskElement = '<div>' + data.result[i].description + ' - ' + data.result[i].status + '<\/div>'
+	      $('#project-' + data.result[i].project_id).append(taskElement)
+		}
+    });
+    });
+
   </script>
 </head>
   <body>
    <h1>My projects lists</h1>
-   <div id="projects-holder"></div>div>
+   <div id="projects-holder"></div>
   </body>
 </html>
